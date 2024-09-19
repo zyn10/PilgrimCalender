@@ -4,29 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Islamic Calendar Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.1/dist/moment-hijri.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Islamic Calendar Generator</h1>
-        <div class="input-container">
-            <label for="company">Company Name:</label>
-            <input type="text" id="company" placeholder="Enter company name">
-            
-            <label for="year">Year:</label>
-            <select id="year"></select>
-            
-            <label for="color">Select Color Palette:</label>
-            <div id="color-palette"></div>
-            
-            <button id="generateBtn">Generate Calendar</button>
+        <!-- Splash Screen -->
+        <div id="splashScreen" class="splash-screen">
+            <div class="loader">
+                <div class="calendar-icon"></div>
+            </div>
+            <h1>Welcome to Custom Calendar Creation</h1>
+            <p>Design your Islamic calendar with ease</p>
         </div>
-        <h2 id="companyName"></h2>
-        <div id="calendar"></div>
-        <button id="downloadBtn" style="display:none;">Download as PDF</button>
+        
+        <!-- Input Dialog Container (initially hidden) -->
+        <div id="dialogContainer" style="display: none;">
+            <div class="dialog" id="companyDialog">
+                <h2>Company Name</h2>
+                <input type="text" id="company" placeholder="Enter your company name">
+                <button id="companySubmitBtn" class="next-btn">Next</button>
+            </div>
+            <!-- Other dialogs as required -->
+        </div>
+        
+        <!-- Calendar Display (initially hidden) -->
+        <div id="calendarContainer" style="display: none;">
+            <h2 id="companyName"></h2>
+            <div id="calendar"></div>
+            <button id="downloadBtn">Download as PDF</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

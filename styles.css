@@ -1,108 +1,160 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+/* General Styles */
+body, html {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 50%, #6398d4 100%);
+    color: #fff;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
-h1 {
+    width: 100%;
+    max-width: 500px;
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    transition: all 0.3s ease;
 }
 
-.input-container {
+/* Splash Screen Styles */
+.splash-screen {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.splash-content h1 {
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.splash-content p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #e0e0e0;
+}
+
+.loader {
     margin-bottom: 20px;
 }
 
-.input-container label {
-    font-weight: bold;
-}
-
-.input-container input, .input-container select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#color-palette {
-    display: flex;
-    gap: 10px;
-}
-
-.color-option {
-    width: 30px;
-    height: 30px;
+.calendar-icon {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #fff;
+    border-top: 5px solid #6398d4;
     border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid transparent;
+    animation: spin 2s linear infinite;
+    position: relative;
 }
 
-.color-option.selected {
-    border: 2px solid #000;
+.calendar-icon::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    width: 30px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 2px;
 }
 
-button {
-    padding: 10px 20px;
+.calendar-icon::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    width: 30px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 3px;
+    border-top: 2px solid #6398d4;
+}
+
+/* Dialog Styles */
+.dialog {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.dialog h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    background: -webkit-linear-gradient(45deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dialog input, .dialog select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
     font-size: 16px;
-    color: white;
-    background-color: #28a745;
+}
+
+.next-btn {
+    padding: 12px 20px;
+    background-color: #6398d4;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #218838;
+.next-btn:hover {
+    background-color: #4e7bbd;
 }
 
-#calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+/* Calendar Styles */
+#calendarContainer {
     margin-top: 20px;
 }
 
-.month {
-    width: calc(33.333% - 20px);
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #e9ecef;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#downloadBtn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.month h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #007bff;
+#downloadBtn:hover {
+    background-color: #218838;
 }
 
-.days {
-    display: flex;
-    flex-wrap: wrap;
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.day {
-    width: calc(100% / 7);
-    text-align: center;
-    padding: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 2px;
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
